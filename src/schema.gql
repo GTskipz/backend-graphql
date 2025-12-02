@@ -1,0 +1,68 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Comment {
+  content: String!
+  fechaCreacion: DateTime!
+  id: ID!
+  user: User!
+}
+
+input CreateCommentInput {
+  content: String!
+  userId: ID!
+}
+
+input CreateUserInput {
+  apellido: String!
+  email: String!
+  nombre: String!
+  username: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  createComment(input: CreateCommentInput!): Comment!
+  createUser(input: CreateUserInput!): User!
+  removeComment(id: ID!): Boolean!
+  removeUser(id: ID!): Boolean!
+  updateComment(input: UpdateCommentInput!): Comment!
+  updateUser(input: UpdateUserInput!): User!
+}
+
+type Query {
+  comment(id: ID!): Comment
+  comments: [Comment!]!
+  commentsByUser(userId: ID!): [Comment!]!
+  user(id: ID!): User
+  users: [User!]!
+}
+
+input UpdateCommentInput {
+  content: String
+  id: ID!
+  userId: ID
+}
+
+input UpdateUserInput {
+  apellido: String
+  email: String
+  id: ID!
+  nombre: String
+  username: String
+}
+
+type User {
+  apellido: String!
+  comments: [Comment!]
+  email: String!
+  fechaCreacion: DateTime!
+  id: ID!
+  nombre: String!
+  username: String!
+}
